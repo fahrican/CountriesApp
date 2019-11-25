@@ -34,20 +34,20 @@ class ListViewModel : ViewModel() {
             countriesService.getCountries()
                 .subscribeOn(Schedulers.newThread()) // processing on a separate thread
                 .observeOn(AndroidSchedulers.mainThread()) // show result on main-thread, is the thread which the user see
-                .subscribeWith(object :
-                    DisposableSingleObserver<List<Country>>() { // what we gonna do when we receive the information
+                .subscribeWith( // what happens when we receive the information
+                    object : DisposableSingleObserver<List<Country>>() {
 
-                    override fun onSuccess(value: List<Country>?) {
-                        countries.value = value
-                        countryLoadError.value = false
-                        loading.value = false
-                    }
+                        override fun onSuccess(value: List<Country>?) {
+                            countries.value = value
+                            countryLoadError.value = false
+                            loading.value = false
+                        }
 
-                    override fun onError(e: Throwable?) {
-                        countryLoadError.value = true
-                        loading.value = false
-                    }
-                })
+                        override fun onError(e: Throwable?) {
+                            countryLoadError.value = true
+                            loading.value = false
+                        }
+                    })
         )
     }
 }
