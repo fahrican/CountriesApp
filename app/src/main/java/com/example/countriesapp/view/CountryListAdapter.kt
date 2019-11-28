@@ -41,7 +41,9 @@ class CountryListAdapter(
         private val progressDrawable = getProgressDrawable(view.context)
 
         fun bind(country: Country) {
+            imageView.loadImage(country.flag, progressDrawable)
             countryName.text = country.countryName
+            countryCapital.text = country.capital
         }
     }
 }
