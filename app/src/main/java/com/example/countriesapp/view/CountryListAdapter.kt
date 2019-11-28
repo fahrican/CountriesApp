@@ -27,7 +27,7 @@ class CountryListAdapter(
         holder.bind(countries[position])
     }
 
-    fun updateCountries(newCountries: List<Country>){
+    fun updateCountries(newCountries: List<Country>) {
         countries.clear()
         countries.addAll(newCountries)
         notifyDataSetChanged()
