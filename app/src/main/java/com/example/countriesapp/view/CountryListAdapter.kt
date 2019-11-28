@@ -35,7 +35,10 @@ class CountryListAdapter(
 
     class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val countryName = view.name
+        private val imageView: ImageView = view.imageView
+        private val countryName: TextView = view.name
+        private val countryCapital: TextView = view.name
+        private val progressDrawable = getProgressDrawable(view.context)
 
         fun bind(country: Country) {
             countryName.text = country.countryName
