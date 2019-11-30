@@ -1,6 +1,7 @@
 package com.example.countriesapp.di
 
 import com.example.countriesapp.model.CountriesApi
+import com.example.countriesapp.model.CountriesService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -20,5 +21,10 @@ class ApiModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) // makes Country class a Observable variable, so other variables can subscribe to it
             .build()
             .create(CountriesApi::class.java)
+    }
+
+    @Provides
+    fun providesCountriesService(): CountriesService {
+        return CountriesService()
     }
 }
