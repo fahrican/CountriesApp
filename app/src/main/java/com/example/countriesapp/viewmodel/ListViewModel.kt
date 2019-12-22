@@ -15,6 +15,7 @@ class ListViewModel : ViewModel() {
 
     @Inject
     lateinit var countriesService: CountriesService
+
     init {
         DaggerApiComponent.create().inject(this)
     }
