@@ -1,11 +1,11 @@
 package com.example.countriesapp.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Country(
-    @SerializedName("name")
+    @field:Json(name = "name")
     val countryName: String?,
     val capital: String?,
-    @SerializedName("flagPNG")
+    @field:Json(name = "flagPNG")
     val flag: String
 )
