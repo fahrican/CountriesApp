@@ -70,4 +70,15 @@ class ListViewModelTest {
         assertEquals(false, listViewModel.countryLoadError.value)
         assertEquals(false, listViewModel.loading.value)
     }
+
+    @Test
+    fun getCountriesOnError() {
+        testSingle = Single.error(Throwable())
+        `when`(countriesService.getCountries()).thenReturn(testSingle)
+
+        listViewModel.refresh()
+
+        assertEquals(true, listViewModel.countryLoadError.value)
+        assertEquals(false, listViewModel.loading.value)
+    }
 }
